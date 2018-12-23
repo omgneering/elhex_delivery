@@ -2,7 +2,7 @@ defmodule ElhexDelivery.PostalCode.DataParser do
   @postal_codes_filepath "data/2016_Gaz_zcta_national.txt"
 
   def parse_data do
-    [_header | data_rows] = File.read!(@postal_codes_filepath) |> String.split("\n")
+    [_header | data_rows] = File.read!(@postal_codes_filepath) |> String.split(~r/\R/)
 
     data_rows
     |> Stream.map(&(String.split(&1, "\t")))
